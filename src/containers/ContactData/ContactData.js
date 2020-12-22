@@ -5,12 +5,14 @@ import classes from "./ContactData.css";
 import axios from "../../axios-products";
 import Input from "../../components/UI/Input/Input";
 import Spinner from "./../../components/UI/Spinner/Spinner";
+import emailjs from "emailjs-com";
 
 class ContactData extends Component {
   state = {
     orderForm: {
       name: {
         elementType: "input",
+        name: "name",
         elementConfig: {
           type: "text",
           placeholder: "Your Name",
@@ -53,6 +55,7 @@ class ContactData extends Component {
       },
       email: {
         elementType: "input",
+        name: "email",
         elementConfig: {
           type: "email",
           placeholder: "Your E-Mail",
@@ -83,6 +86,27 @@ class ContactData extends Component {
     loading: false,
   };
 
+  sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "service_4zfjvp7",
+        "template_2072qe4",
+        e.target,
+        "user_Nm1DBhqhPHIu7KhH3x0DZ"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+    e.target.reset();
+  };
+
   orderHandler = (event) => {
     event.preventDefault();
     this.setState({ loading: true });
@@ -97,10 +121,15 @@ class ContactData extends Component {
       itemOrdered: this.props.productName,
       itemPrice: this.props.totalPrice,
     };
+    this.sendEmail(event);
     axios
       .post("/orders.json", order)
       .then((response) => {
         this.setState({ loading: false });
+
+        alert(
+          "Thanks For Shopping With Us. Kindly Check Your Mail. Continue Shopping :)."
+        );
         this.props.history.push("/");
       })
       .catch((error) => {

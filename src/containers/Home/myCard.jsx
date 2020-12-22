@@ -30,7 +30,7 @@ export default function MyCard(props) {
           </Box>
         </div>
         <h2 style={{ color: "#f4511e" }}>GHc{props.thePrice}</h2>
-        <Rating value={3} name="unique-rating" />
+        <Rating value={5} readOnly name="unique-rating" />
         <Button
           onClick={props.purchase}
           style={{

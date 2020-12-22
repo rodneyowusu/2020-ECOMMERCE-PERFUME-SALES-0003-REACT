@@ -5,7 +5,7 @@ import NavigationItem from "./NavigationItem/NavigationItem";
 
 const navigationItems = () => (
   <ul className={classes.NavigationItems}>
-    <NavigationItem active link="/">
+    <NavigationItem link="/" exact>
       Perfume Oils
     </NavigationItem>
     <NavigationItem link="/bodysplash">Body Splash</NavigationItem>

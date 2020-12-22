@@ -4,15 +4,18 @@ import withErrorHandler from "./../../hoc/withErrorHandler/withErrorHandler";
 import Aux from "../../hoc/AUXILLARY/Auxiliary";
 import MyCard from "./myCard";
 import { Grid } from "@material-ui/core";
+import Spinner from "./../../components/UI/Spinner/Spinner";
 
 class HomePage extends Component {
   state = {
     items: [],
     thepathname: null,
+    loading: false,
   };
 
   componentDidMount() {
     let pathName = this.props.location.pathname;
+    this.setState({ loading: true });
     console.log(this.props);
     axios
       .get("/PerfumeOilProducts.json")
@@ -27,7 +30,11 @@ class HomePage extends Component {
         }
 
         console.log(pathName);
-        this.setState({ items: [...fetchedOrders], thepathname: pathName });
+        this.setState({
+          items: [...fetchedOrders],
+          thepathname: pathName,
+          loading: false,
+        });
       })
       .catch((error) => {
         console.log(error);
@@ -50,30 +57,34 @@ class HomePage extends Component {
   }
 
   render() {
-    return (
-      <Aux>
-        <Grid container spacing={5} style={{ margin: "auto", padding: "auto" }}>
-          {this.state.items.map((data, index) => (
-            <Grid
-              item
-              xs={12}
-              sm={6}
-              md={3}
-              key={index}
-              style={{ margin: "auto", padding: "auto" }}
-            >
-              <MyCard
-                productName={data.product_name}
-                thePrice={data.price}
-                description={data.description}
-                image={data.imageSrc}
-                purchase={this.postSelectedHandler.bind(this, data)}
-              />
-            </Grid>
-          ))}
-        </Grid>
-      </Aux>
+    let product_cards = (
+      <Grid container spacing={5} style={{ margin: "auto", padding: "auto" }}>
+        {this.state.items.map((data, index) => (
+          <Grid
+            item
+            xs={12}
+            sm={6}
+            md={3}
+            key={index}
+            style={{ margin: "auto", padding: "auto" }}
+          >
+            <MyCard
+              productName={data.product_name}
+              thePrice={data.price}
+              description={data.description}
+              image={data.imageSrc}
+              purchase={this.postSelectedHandler.bind(this, data)}
+            />
+          </Grid>
+        ))}
+      </Grid>
     );
+
+    if (this.state.loading) {
+      product_cards = <Spinner />;
+    }
+
+    return <Aux>{product_cards}</Aux>;
   }
 }
 

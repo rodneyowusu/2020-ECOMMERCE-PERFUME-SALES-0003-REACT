@@ -1,12 +1,21 @@
 import React, { Component } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect, withRouter } from "react-router-dom";
 import Layout from "./hoc/Layout/Layout";
-import Details from "./containers/CheckOut/Checkout";
-import HomePage from "./containers/Home/HomePage";
-import BodySplash from "./containers/bodySplash/bodySplash";
 import { FooterContainer } from "./containers/Footer";
-
 import "./App.css";
+import asyncComponent from "./hoc/asyncComponent/asyncComponent";
+
+//Adding Lazy Loading
+const asyncCheckout = asyncComponent(() => {
+  return import("./containers/CheckOut/Checkout");
+});
+
+const asyncPerfumeOils = asyncComponent(() => {
+  return import("./containers/Home/HomePage");
+});
+const asyncBodySplash = asyncComponent(() => {
+  return import("./containers/bodySplash/bodySplash");
+});
 
 class App extends Component {
   render() {
@@ -14,9 +23,10 @@ class App extends Component {
       <div>
         <Layout>
           <Switch>
-            <Route path="/bodysplash" component={BodySplash} />
-            <Route path="/checkout" component={Details} />
-            <Route path="/" exact component={HomePage} />
+            <Route path="/bodysplash" component={asyncBodySplash} />
+            <Route path="/checkout" component={asyncCheckout} />
+            <Route path="/" exact component={asyncPerfumeOils} />
+            <Redirect to="/" />
           </Switch>
         </Layout>
 
@@ -26,4 +36,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);

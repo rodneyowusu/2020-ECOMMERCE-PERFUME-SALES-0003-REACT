@@ -45,6 +45,17 @@ export const Link = styled.a`
   }
 `;
 
+export const Linker = styled.p`
+  color: #fff;
+  margin-bottom: 20px;
+  font-size: 18px;
+  text-decoration: none;
+  &:hover {
+    color: #ff9c00;
+    transition: 200ms ease-in;
+  }
+`;
+
 export const Title = styled.p`
   font-size: 24px;
   color: #fff;

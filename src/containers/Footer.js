@@ -9,31 +9,31 @@ export function FooterContainer() {
         <Footer.Row>
           <Footer.Column>
             <Footer.Title>About Us</Footer.Title>
-            <Footer.Link href="#">Story</Footer.Link>
-            <Footer.Link href="#">Clients</Footer.Link>
-            <Footer.Link href="#">Testimonials</Footer.Link>
+            <Footer.Linker href="#">Story</Footer.Linker>
+            <Footer.Linker href="#">Clients</Footer.Linker>
+            <Footer.Linker href="#">Testimonials</Footer.Linker>
           </Footer.Column>
           <Footer.Column>
             <Footer.Title>Services</Footer.Title>
-            <Footer.Link href="#">Marketing</Footer.Link>
-            <Footer.Link href="#">Consulting</Footer.Link>
-            <Footer.Link href="#">Development</Footer.Link>
-            <Footer.Link href="#">Design</Footer.Link>
+            <Footer.Linker href="#">Marketing</Footer.Linker>
+            <Footer.Linker href="#">Consulting</Footer.Linker>
+            <Footer.Linker href="#">Development</Footer.Linker>
+            <Footer.Linker href="#">Design</Footer.Linker>
           </Footer.Column>
           <Footer.Column>
             <Footer.Title>Contact Us</Footer.Title>
-            <Footer.Link href="#">United States</Footer.Link>
-            <Footer.Link href="#">United Kingdom</Footer.Link>
-            <Footer.Link href="#">Australia</Footer.Link>
-            <Footer.Link href="#">Support</Footer.Link>
+            <Footer.Linker href="#">United States</Footer.Linker>
+            <Footer.Linker href="#">United Kingdom</Footer.Linker>
+            <Footer.Linker href="#">Australia</Footer.Linker>
+            <Footer.Linker href="#">Support</Footer.Linker>
           </Footer.Column>
           <Footer.Column>
             <Footer.Title>Social</Footer.Title>
-            <Footer.Link href="#">
+            <Footer.Link href="https://www.facebook.com/100perscent-Fragrance-OILS-103840481618817/">
               <Icon className="fab fa-facebook-f" />
               Facebook
             </Footer.Link>
-            <Footer.Link href="#">
+            <Footer.Link href="https://instagram.com/100perscent_fragranceoils?igshid=wghxz2b59y8s">
               <Icon className="fab fa-instagram" />
               Instagram
             </Footer.Link>
@@ -47,6 +47,19 @@ export function FooterContainer() {
             </Footer.Link>
           </Footer.Column>
         </Footer.Row>
+      </Footer.Wrapper>
+      <Footer.Wrapper>
+        <footer
+          style={{
+            paddingTop: "50px",
+            left: "0",
+            bottom: "0",
+            width: "100%",
+            textAlign: "center",
+          }}
+        >
+          &copy; Copyright 2020 RoddyTECH ACCRA,GHANA . All rights reserved.
+        </footer>
       </Footer.Wrapper>
     </Footer>
   );
