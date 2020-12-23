@@ -37,13 +37,13 @@ export function FooterContainer() {
               <Icon className="fab fa-instagram" />
               Instagram
             </Footer.Link>
-            <Footer.Link href="#">
-              <Icon className="fab fa-youtube" />
-              Youtube
+            <Footer.Link href="http://wa.me/233208485369">
+              <Icon className="fab fa-whatsapp" />
+              Whatsapp
             </Footer.Link>
-            <Footer.Link href="#">
-              <Icon className="fab fa-twitter" />
-              Twitter
+            <Footer.Link href="mailto:hundredperscentfragrance@gmail.com">
+              <Icon className="fas fa-envelope" />
+              Email US
             </Footer.Link>
           </Footer.Column>
         </Footer.Row>

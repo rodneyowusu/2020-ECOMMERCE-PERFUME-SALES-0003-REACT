@@ -24,7 +24,7 @@ class ContactData extends Component {
         valid: false,
         touched: false,
       },
-      street: {
+      location: {
         elementType: "input",
         elementConfig: {
           type: "text",
@@ -37,7 +37,7 @@ class ContactData extends Component {
         valid: false,
         touched: false,
       },
-      zipCode: {
+      mobileNumber: {
         elementType: "input",
         elementConfig: {
           type: "text",
@@ -61,12 +61,8 @@ class ContactData extends Component {
           placeholder: "Your E-Mail",
         },
         value: "",
-        validation: {
-          required: true,
-          isEmail: true,
-        },
-        valid: false,
-        touched: false,
+        validation: {},
+        valid: true,
       },
       deliveryMethod: {
         elementType: "select",
@@ -128,7 +124,7 @@ class ContactData extends Component {
         this.setState({ loading: false });
 
         alert(
-          "Thanks For Shopping With Us. Kindly Check Your Mail. Continue Shopping :)."
+          "Your Order Has Been Placed Successfully . We'll Contact You As Soon As Possible . Don't Hesitate To Interact With Us On Our Social Media Platforms . Various Links Can Be Found Below "
         );
         this.props.history.push("/");
       })
